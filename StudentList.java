@@ -20,14 +20,14 @@ public class StudentList
 			System.out.println("Loading data ...");			
 			try
 			{
-			BufferedReader s = new BufferedReader(
+			BufferedReader bufferedReader = new BufferedReader(
 					new InputStreamReader(
 							new FileInputStream("students.txt"))); 
-			String r = s.readLine();
-			String i[] = r.split(", ");  //..
-			for(String j : i)
+			String line = bufferedReader.readLine();
+			String students[] = line.split(", ");  //..
+			for(String student : students)
 			{
-				System.out.println(j);
+				System.out.println(student);
 			}
 
 			}
@@ -42,14 +42,14 @@ public class StudentList
 			System.out.println("Loading data ...");			
 			try
 			{
-			BufferedReader s = new BufferedReader(
+			BufferedReader bufferedReader = new BufferedReader(
 					new InputStreamReader(
 							new FileInputStream("students.txt"))); 
-			String r = s.readLine();
-			String i[] = r.split(", ");
-			Random x = new Random();
-				int y = x.nextInt(i.length);
-					System.out.println(i[y]);
+			String line = bufferedReader.readLine();
+			String students[] = line.split(", ");
+			Random random = new Random();
+				int index = random.nextInt(students.length);
+					System.out.println(students[index]);
 			}
 			catch (Exception e){}
 			System.out.println("Data Loaded.");			
@@ -59,15 +59,15 @@ public class StudentList
 			System.out.println("Loading data ...");			
 			try
 			{
-			BufferedWriter s = new BufferedWriter(
+			BufferedWriter bufferedReader = new BufferedWriter(
 					new FileWriter("students.txt", true));
-			String t = args[0].substring(1);
-	        Date d = new Date();
+			String newData = args[0].substring(1);
+	        Date date = new Date();
 	        String df = "dd-mm-yyyy-hh:mm:ss a";
 	        DateFormat dateFormat = new SimpleDateFormat(df);
-	        String fd= dateFormat.format(d);
-			s.write(", "+t+"\nList last updated on "+fd);
-			s.close();
+	        String formatDate = dateFormat.format(date);
+				bufferedReader.write(", "+newData+"\nList last updated on "+formatDate);
+				bufferedReader.close();
 			}
 			catch (Exception e){}
 							
@@ -78,16 +78,16 @@ public class StudentList
 			System.out.println("Loading data ...");			
 			try
 			{
-			BufferedReader s = new BufferedReader(
+			BufferedReader bufferedReader = new BufferedReader(
 					new InputStreamReader(
 							new FileInputStream("students.txt"))); 
-			String r = s.readLine();
-			String i[] = r.split(",");	
+			String line = bufferedReader.readLine();
+			String students[] = line.split(",");
 			boolean done = false;
-			String t = args[0].substring(1);
-			for(int idx = 0; idx<i.length && !done; idx++)
+			String newData = args[0].substring(1);
+			for(int idx = 0; idx<students.length && !done; idx++)
 			{
-				if(i[idx].equals(t))
+				if(students[idx].equals(newData))
 				{
 					System.out.println("We found it!");
 						done=true;
@@ -103,14 +103,14 @@ public class StudentList
 			System.out.println("Loading data ...");			
 			try
 			{
-			BufferedReader s = new BufferedReader(
+			BufferedReader bufferedReader = new BufferedReader(
 					new InputStreamReader(
 							new FileInputStream("students.txt"))); 
-			String D = s.readLine();
-			char a[] = D.toCharArray();			
+			String line = bufferedReader.readLine();
+			char students[] = line.toCharArray();
 			boolean in_word = false;
 			int count=0;
-			for(char c:a)
+			for(char c:students)
 			{
 				if(c ==' ') 
 				{
